@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Cocktails {
+public class ApiDataList {
+
     @SerializedName("drinks")
     @Expose
     private List<ApiData> drinks = null;

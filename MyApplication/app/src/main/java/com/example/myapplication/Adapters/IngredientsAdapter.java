@@ -1,22 +1,10 @@
 package com.example.myapplication.Adapters;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.myapplication.Data.Ingredients;
-
-import java.util.ArrayList;
 /*
 public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.MyViewHolder> {
 
 
-    private ArrayList<Ingredients> mMeasuresArrayList = new ArrayList<>();
+    private ArrayList<Drinks> mMeasuresArrayList = new ArrayList<>();
     private Context context;
     private LayoutInflater inflater;
 
@@ -25,7 +13,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         inflater = LayoutInflater.from(context);
     }
 
-    public void setMeasuresList(ArrayList<Ingredients> measuresList) {
+    public void setMeasuresList(ArrayList<Drinks> measuresList) {
         this.mMeasuresArrayList = measuresList;
         notifyDataSetChanged();
     }
@@ -39,7 +27,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        final Ingredients measures = mMeasuresArrayList.get(position);
+        final Drinks measures = mMeasuresArrayList.get(position);
         holder.mIngredientText.setText(measures.getIngredient());
         holder.mMeasureText.setText(measures.getMeasure());
 

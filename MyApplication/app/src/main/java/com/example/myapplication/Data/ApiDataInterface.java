@@ -1,39 +1,55 @@
 package com.example.myapplication.Data;
 
-import android.renderscript.Element;
 
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import retrofit2.http.Url;
+import io.reactivex.Single;
 
 public interface ApiDataInterface {
 
     String JSONURL = "https://www.thecocktaildb.com/api/json/v1/1/";
 
+    /*
+
     @GET
-    Call<ApiData> getsearchList(@Url String url);
+    Single<ApiDataListResponse> getsearchList(@Url String url);
+    */
 
     @GET("filter.php")
-    Call<ApiData> getAlcoholFilter(@Query("a") String filter);
+    Single<DrinksListResponse> listCocktailIds(@Query("c") String category);
+
+    //@GET("filter.php")
+    //Single<ApiDataListResponse> getAlcoholFilter(@Query("a") String filter);
+
+    /*
 
     @GET("filter.php")
-    Call<ApiData> getIngredientFilter(@Query("i") String filter);
+    Single<ApiDataListResponse> getIngredientFilter(@Query("i") String filter);
 
     @GET("filter.php")
-    Call<ApiData> getDrinkTypeFilter(@Query("c") String filter);
-
-    @GET("search.php?s=margarita")
-    Call<String> getString();
-
-    @GET("search.php")
-    Call<ApiData> getSearchResults(@Query("s") String search);
-
-    @GET("random.php")
-    Call<ApiData> getRandomixer();
+    Single<ApiDataListResponse> getDrinkTypeFilter(@Query("c") String filter);
+    */
 
     @GET("lookup.php")
-    Call<ApiData> getDrinkById(@Query("i") String id);
+    Single<ApiDataListResponse> searchCocktailById(@Query("i") String i);
+
+
+    //@GET("search.php?s=margarita")
+    //Single<ApiDataListResponse> getString();
+
+    /*
+
+    @GET("search.php")
+    Single<ApiDataListResponse> getSearchResults(@Query("s") String search);
+
+    @GET("random.php")
+    Single<ApiDataListResponse> getRandomixer();
+
+    @GET("lookup.php")
+    Single<ApiDataListResponse> getDrinkById(@Query("i") String id);
+
+
+     */
 
 
 }

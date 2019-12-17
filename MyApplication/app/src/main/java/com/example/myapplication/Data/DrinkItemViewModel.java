@@ -1,21 +1,12 @@
 package com.example.myapplication.Data;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-public class Cocktail  {
+public class DrinkItemViewModel  {
     private String mDrinkName;
     private String mDrinkThumb;
     private String mDrinkId;
+    private String instruction;
 
-    public Cocktail() {
-    }
-
-    public Cocktail(String Id, String name, String Thumb) {
-        this.mDrinkId = Id;
-        this.mDrinkName = name;
-        this.mDrinkThumb = Thumb;
-    }
+    private String ingrdient1;
 
     public String getmDrinkName() {
         return mDrinkName;
@@ -39,6 +30,21 @@ public class Cocktail  {
 
     public void setmDrinkId(String mDrinkId) {
         this.mDrinkId = mDrinkId;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+    public String getIngrdient1() {
+        return ingrdient1;
+    }
+
+    public void setIngrdient1(String ingrdient1) {
+        this.ingrdient1 = ingrdient1;
     }
 
 }

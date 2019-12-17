@@ -5,15 +5,19 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Cocktails {
+public class ApiDataListResponse {
+
     @SerializedName("drinks")
     @Expose
-    private List<ApiData> drinks = null;
+    List<ApiData> drinks;
 
+    int totalDrinks;
     public List<ApiData> getDrinks() {
         return drinks;
     }
-
+    public int getTotalDrinks() {
+        return totalDrinks;
+    }
     public void setDrinks(List<ApiData> drinks) {
         this.drinks = drinks;
     }

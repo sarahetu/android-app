@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Data.ApiData;
-import com.example.myapplication.Data.Cocktail;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;

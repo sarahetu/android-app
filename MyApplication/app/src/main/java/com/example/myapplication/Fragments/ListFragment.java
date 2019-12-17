@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +35,7 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
     private DrinkSearchContract.Presenter presenter;
     private ListAdapter listViewAdapter;
     private FragmentManager fragmentManager;
+    private boolean isLayoutLinear = true;
 
     private ListFragment(){}
 
@@ -53,7 +56,21 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
 
         fragmentManager = getActivity().getSupportFragmentManager();
 
+
         setupRecyclerView();
+
+        Button button = (Button) rootView.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isLayoutLinear) {
+                    recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                    isLayoutLinear = false;
+                } else {
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    isLayoutLinear = true;
+                }
+            }
+        });
 
         presenter = new DrinkSearchPresenter(
                 RetrofitClient.getDrinkDisplayRepository(),
@@ -74,6 +91,7 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
         listViewAdapter = new ListAdapter(fragmentManager);
         recyclerView.setAdapter(listViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        isLayoutLinear=true;
     }
 
     @Override

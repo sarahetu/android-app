@@ -1,20 +1,19 @@
 package com.example.myapplication.Fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.Data.DrinkItemViewModel;
 import com.example.myapplication.R;
 
@@ -23,17 +22,19 @@ public class IngredientsFragment extends Fragment {
     private View rootView;
 
     // Data
-    private String Id;
-    private String Name;
-    private String Thumb;
-    private String Preparation;
-    private String Ingredient1;
+    private String id;
+    private String name;
+    private String thumb;
+    private String instruction;
+    private String ingredient1;
+    private String ingredient2;
 
     // Elements
     private TextView tvCocktailName;
     private ImageView ivCocktailThumb;
     private TextView tvCocktailPreparation;
     private TextView tvIngredient1;
+    private TextView tvIngredient2;
 
 
 
@@ -43,11 +44,12 @@ public class IngredientsFragment extends Fragment {
 
 
     public IngredientsFragment(DrinkItemViewModel drinkItemViewModel){
-        Id = drinkItemViewModel.getmDrinkId();
-        Name = drinkItemViewModel.getmDrinkName();
-        Thumb = drinkItemViewModel.getmDrinkThumb();
-        Preparation = drinkItemViewModel.getInstruction();
-        Ingredient1 = drinkItemViewModel.getIngrdient1();
+        id = drinkItemViewModel.getmDrinkId();
+        name = drinkItemViewModel.getmDrinkName();
+        thumb = drinkItemViewModel.getmDrinkThumb();
+        instruction = drinkItemViewModel.getInstruction();
+        ingredient1 = drinkItemViewModel.getIngrdient1();
+        ingredient2 = drinkItemViewModel.getIngrdient2();
     }
 
 
@@ -63,19 +65,20 @@ public class IngredientsFragment extends Fragment {
         ivCocktailThumb = rootView.findViewById(R.id.iv_image_details);
         tvCocktailPreparation = rootView.findViewById(R.id.tv_preparation_details);
         tvIngredient1 = rootView.findViewById(R.id.tv_ingredient1_details);
+        tvIngredient2 = rootView.findViewById(R.id.tv_ingredient2);
 
 
         // Setting values
-        tvCocktailName.setText(Name);
+        tvCocktailName.setText(name);
         Glide.with(rootView)
-                .load(Thumb)
+                .load(thumb)
                 .apply(new RequestOptions().override(300,300))
                 .apply(RequestOptions.circleCropTransform())
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(ivCocktailThumb);
-        tvCocktailPreparation.setText(Preparation);
+        tvCocktailPreparation.setText(instruction);
 
-        setIngredient(Ingredient1, tvIngredient1);
+        setIngredient(ingredient1, tvIngredient1);
 
         return rootView;
     }

@@ -24,22 +24,37 @@ public class DrinkToViewModelMapper {
         return drinkList;
     }
 
-    public List<DrinkItemViewModel> mapInfos(List<ApiData> drinks) {
+    /**
+     * @param drinks a List of ApiData objects
+     *
+     * @return a list of DrinkItemViewModel objects, each attribut of each object is associated
+     * with the right element refered by the API
+     */
+    public List<DrinkItemViewModel> mapEachDataAttribut(List<ApiData> drinks) {
         List<DrinkItemViewModel> drinkList = new ArrayList<>();
         for (ApiData drink : drinks) {
-            drinkList.add(mapInfos(drink));
+            drinkList.add(mapEachDataAttribut(drink));
         }
         return drinkList;
     }
 
-    private DrinkItemViewModel mapInfos(ApiData cocktailInfo){
-        DrinkItemViewModel cocktailItemViewModel = new DrinkItemViewModel();
-        cocktailItemViewModel.setmDrinkId(cocktailInfo.getIdDrink());
-        cocktailItemViewModel.setIngrdient1(cocktailInfo.getStrIngredient1());
-        cocktailItemViewModel.setInstruction(cocktailInfo.getStrInstructions());
-        cocktailItemViewModel.setmDrinkName(cocktailInfo.getStrDrink());
-        cocktailItemViewModel.setmDrinkThumb(cocktailInfo.getStrDrinkThumb());
-
-        return cocktailItemViewModel;
+    /**
+     * associate to each drink the right name, id, instruction and ingredients refered by the API
+     * @param apiData
+     * @return a DrinkItemViewModel with a right element associated, refered by the API
+     */
+    private DrinkItemViewModel mapEachDataAttribut(ApiData apiData){
+        DrinkItemViewModel drinkItemViewModel = new DrinkItemViewModel();
+        drinkItemViewModel.setmDrinkId(apiData.getIdDrink());
+        drinkItemViewModel.setInstruction(apiData.getStrInstructions());
+        drinkItemViewModel.setmDrinkName(apiData.getStrDrink());
+        drinkItemViewModel.setmDrinkThumb(apiData.getStrDrinkThumb());
+        drinkItemViewModel.setIngrdient1(apiData.getStrIngredient1());
+        drinkItemViewModel.setIngrdient2(apiData.getStrIngredient2());
+        drinkItemViewModel.setIngrdient3(apiData.getStrIngredient3());
+        drinkItemViewModel.setIngrdient4(apiData.getStrIngredient4());
+        drinkItemViewModel.setIngrdient5(apiData.getStrIngredient5());
+        drinkItemViewModel.setAlcoholic(apiData.getStrAlcoholic());
+        return drinkItemViewModel;
     }
 }

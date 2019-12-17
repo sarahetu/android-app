@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="search_query" translatable="false">Query</string>
-
-    <!-- Cocktail Details -->
-    <string name="label_prep"><u>Preparation :</u></string>
-    <string name="ingredients"><u>Ingredients :</u></string>
-
+    <string name="label_prep"><u>Preparation</u></string>
+    <string name="ingredients"><u>Ingredients</u></string>
     <string name="list">List</string>
-
 </resources>

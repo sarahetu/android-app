@@ -49,10 +49,8 @@ public class DrinkDisplayActivity extends AppCompatActivity {
 
     public void connectFragment(Fragment f){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
         fragmentTransaction.replace(R.id.fragment_container, f);
         fragmentTransaction.addToBackStack(null);
-
         fragmentTransaction.commit();
     }
 

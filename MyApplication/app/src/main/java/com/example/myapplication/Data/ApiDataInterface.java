@@ -18,8 +18,8 @@ public interface ApiDataInterface {
     @GET("filter.php")
     Single<DrinksListResponse> listCocktailIds(@Query("c") String category);
 
-    //@GET("filter.php")
-    //Single<ApiDataListResponse> getAlcoholFilter(@Query("a") String filter);
+    @GET("filter.php")
+    Single<DrinksListResponse> getAlcoholFilter(@Query("a") String category);
 
     /*
 

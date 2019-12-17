@@ -8,4 +8,5 @@ import io.reactivex.Single;
 public interface DrinkDisplayRepository {
     Single<DrinksListResponse> getDrinksListResponse();
     Single<ApiDataListResponse> getDrinkSearchResponse(String id);
+    Single<DrinksListResponse> getNonAlcoholicListResponse();
 }

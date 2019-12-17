@@ -20,21 +20,25 @@ import com.example.myapplication.R;
 public class IngredientsFragment extends Fragment {
 
     private View rootView;
-
-    // Data
     private String id;
     private String name;
     private String thumb;
     private String instruction;
     private String ingredient1;
     private String ingredient2;
-
-    // Elements
-    private TextView tvCocktailName;
-    private ImageView ivCocktailThumb;
-    private TextView tvCocktailPreparation;
-    private TextView tvIngredient1;
-    private TextView tvIngredient2;
+    private String ingredient3;
+    private String ingredient4;
+    private String ingredient5;
+    private String alcoholic;
+    private TextView textViewName;
+    private ImageView textViewThumb;
+    private TextView textViewInstruction;
+    private TextView textViewIngredient1;
+    private TextView textViewIngredient2;
+    private TextView textViewIngredient3;
+    private TextView textViewIngredient4;
+    private TextView textViewIngredient5;
+    private TextView textViewAlcoholic;
 
 
 
@@ -50,8 +54,11 @@ public class IngredientsFragment extends Fragment {
         instruction = drinkItemViewModel.getInstruction();
         ingredient1 = drinkItemViewModel.getIngrdient1();
         ingredient2 = drinkItemViewModel.getIngrdient2();
+        ingredient3 = drinkItemViewModel.getIngrdient3();
+        ingredient4 = drinkItemViewModel.getIngrdient4();
+        ingredient5 = drinkItemViewModel.getIngrdient5();
+        alcoholic = drinkItemViewModel.getAlcoholic();
     }
-
 
 
     @Nullable
@@ -60,40 +67,55 @@ public class IngredientsFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_ingredient, container, false);
 
-        // Binding elements
-        tvCocktailName = rootView.findViewById(R.id.tv_name_details);
-        ivCocktailThumb = rootView.findViewById(R.id.iv_image_details);
-        tvCocktailPreparation = rootView.findViewById(R.id.tv_preparation_details);
-        tvIngredient1 = rootView.findViewById(R.id.tv_ingredient1_details);
-        tvIngredient2 = rootView.findViewById(R.id.tv_ingredient2);
+        textViewName = rootView.findViewById(R.id.tv_name_details);
+        textViewThumb = rootView.findViewById(R.id.textView_image);
+        textViewInstruction = rootView.findViewById(R.id.textView_instruction);
+        textViewIngredient1 = rootView.findViewById(R.id.textView_ingredient1);
+        textViewIngredient2 = rootView.findViewById(R.id.textView_ingredient2);
+        textViewIngredient3 = rootView.findViewById(R.id.textView_ingredient3);
+        textViewIngredient4 = rootView.findViewById(R.id.textView_ingredient4);
+        textViewIngredient5 = rootView.findViewById(R.id.textView_ingredient5);
+        textViewAlcoholic = rootView.findViewById(R.id.textView_alcoholic);
 
-
-        // Setting values
-        tvCocktailName.setText(name);
+        textViewName.setText(name);
+        textViewInstruction.setText(instruction);
+        textViewIngredient1.setText(ingredient1);
+        textViewIngredient1.setText(ingredient2);
+        textViewIngredient1.setText(ingredient3);
+        textViewIngredient1.setText(ingredient4);
+        textViewIngredient1.setText(ingredient5);
+        textViewIngredient1.setText(alcoholic);
         Glide.with(rootView)
                 .load(thumb)
-                .apply(new RequestOptions().override(300,300))
-                .apply(RequestOptions.circleCropTransform())
+                .apply(new RequestOptions().override(500,500))
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .into(ivCocktailThumb);
-        tvCocktailPreparation.setText(instruction);
-
-        setIngredient(ingredient1, tvIngredient1);
+                .into(textViewThumb);
+        setIngredient(ingredient1, textViewIngredient1);
+        setIngredient(ingredient2, textViewIngredient2);
+        setIngredient(ingredient3, textViewIngredient3);
+        setIngredient(ingredient4, textViewIngredient4);
+        setIngredient(ingredient5, textViewIngredient5);
+        setAlcoholic(alcoholic,textViewAlcoholic);
 
         return rootView;
     }
 
-
-    public boolean isNullOrEmpty(String str) {
-        if(str != null && !str.isEmpty())
-            return false;
-        return true;
+    public void setInstruction(String instruction, TextView textView){
+        if (instruction != null && !instruction.isEmpty()){
+            textView.setText(instruction);
+        }
     }
 
 
-    public void setIngredient(String ingredient, TextView tvContainer){
-        if(!isNullOrEmpty(ingredient)){
-            tvContainer.setText("- " + ingredient);
+    public void setIngredient(String ingredient, TextView textView){
+        if (ingredient != null && !ingredient.isEmpty()){
+            textView.setText(ingredient);
+        }
+    }
+
+    public void setAlcoholic(String alcoholic, TextView textView){
+        if(alcoholic != null && !alcoholic.isEmpty()){
+            textView.setText(alcoholic);
         }
     }
 

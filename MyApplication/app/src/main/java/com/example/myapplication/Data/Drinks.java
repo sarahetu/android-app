@@ -1,13 +1,11 @@
 package com.example.myapplication.Data;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class Drinks {
 
     private String idDrink;
     private String strDrink;
     private String strDrinkThumb;
+    private String strAlcoholic;
 
     public String getIdDrink() {
         return idDrink;
@@ -31,6 +29,12 @@ public class Drinks {
 
     public void setStrDrinkThumb(String strDrinkThumb) {
         this.strDrinkThumb = strDrinkThumb;
+    }
+    public String getStrAlcoholic() {
+        return strAlcoholic;
+    }
+    public void setStrAlcoholic(String strAlcoholic) {
+        this.strAlcoholic = strAlcoholic;
     }
 
 

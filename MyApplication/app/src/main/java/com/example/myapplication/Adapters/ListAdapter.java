@@ -35,6 +35,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
         private ImageView strDrinkThumb;
         private TextView strInstructions;
         private TextView strIngredient1;
+        private TextView strIngredient2;
+        private TextView strAlcoholic;
+
 
         private FragmentManager fragmentManager;
 
@@ -44,21 +47,23 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
             this.fragmentManager = fragmentManager;
             strDrink = mView.findViewById(R.id.testView_strDdrink);
             strDrinkThumb = mView.findViewById(R.id.imageView_strDrinkThumb);
-            strIngredient1 = mView.findViewById(R.id.testView_ing1);
             strInstructions = mView.findViewById(R.id.textView_strInstructions);
+            strIngredient1 = mView.findViewById(R.id.testView_ing1);
+            strIngredient2 = mView.findViewById(R.id.testView_ing2);
+            strAlcoholic = mView.findViewById(R.id.testView_ing3);
         }
 
 
         void bind(DrinkItemViewModel drinkItemViewModel){
             this.drinkItemViewModel = drinkItemViewModel;
             strDrink.setText(this.drinkItemViewModel.getmDrinkName());
-            strIngredient1.setText("Ingredient 1 : " + this.drinkItemViewModel.getIngrdient1());
-            strInstructions.setText(this.drinkItemViewModel.getInstruction());
-            // Glide for image
+            strIngredient1.setText(this.drinkItemViewModel.getIngrdient1());
+            strIngredient2.setText(this.drinkItemViewModel.getIngrdient2());
+            strAlcoholic.setText(this.drinkItemViewModel.getIngrdient3());
+            //strInstructions.setText(this.drinkItemViewModel.getInstruction());
             Glide.with(mView)
                     .load(drinkItemViewModel.getmDrinkThumb())
                     .apply(new RequestOptions().override(200,200))
-                    .apply(RequestOptions.circleCropTransform())
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(strDrinkThumb);
         }
@@ -94,12 +99,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
             @Override
             public void onClick(View v) {
                 Fragment f = IngredientsFragment.newInstance(currentElement);
-
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
                 fragmentTransaction.replace(R.id.fragment_container, f);
                 fragmentTransaction.addToBackStack(null);
-
                 fragmentTransaction.commit();
             }
         });

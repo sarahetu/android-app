@@ -21,4 +21,8 @@ public class DrinkDisplayRemoteDataSource {
     public Single<ApiDataListResponse> getDrinkDetails(String id) {
         return data.searchCocktailById(id);
     }
+
+    public Single<DrinksListResponse> getNonAlcoholSearchResponse() {
+        return data.getAlcoholFilter("Non_Alcoholic");
+    }
 }

@@ -41,7 +41,7 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
                                 drinkDisplayRepository,
                                 drinkListResponse.getDrinks()
                         ));
-                        displayDrink(ids);
+                        displayDrinks(ids);
                     }
 
                     @Override
@@ -53,7 +53,7 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
 
     }
 
-    public void displayDrink(List<String> ids){
+    public void displayDrinks(List<String> ids){
         compositeDisposable.clear();
         for(String id : ids){
             compositeDisposable.add(drinkDisplayRepository.getDrinkSearchResponse(id)
@@ -62,7 +62,7 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
                     .subscribeWith(new DisposableSingleObserver<ApiDataListResponse>() {
                         @Override
                         public void onSuccess(ApiDataListResponse apiDataListResponse) {
-                            view.displayDrinks(drinkToViewModelMapper.mapInfos(
+                            view.displayDrinks(drinkToViewModelMapper.mapEachDataAttribut(
                                     apiDataListResponse.getDrinks())
                             );
                         }

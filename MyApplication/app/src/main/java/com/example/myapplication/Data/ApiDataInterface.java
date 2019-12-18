@@ -9,11 +9,9 @@ public interface ApiDataInterface {
 
     String JSONURL = "https://www.thecocktaildb.com/api/json/v1/1/";
 
-    /*
 
-    @GET
-    Single<ApiDataListResponse> getsearchList(@Url String url);
-    */
+    //@GET
+    //Single<ApiDataListResponse> getsearchList(@Url String url);
 
     @GET("filter.php")
     Single<DrinksListResponse> listCocktailIds(@Query("c") String category);
@@ -21,23 +19,12 @@ public interface ApiDataInterface {
     @GET("filter.php")
     Single<DrinksListResponse> getAlcoholFilter(@Query("a") String category);
 
-    /*
-
-    @GET("filter.php")
-    Single<ApiDataListResponse> getIngredientFilter(@Query("i") String filter);
-
-    @GET("filter.php")
-    Single<ApiDataListResponse> getDrinkTypeFilter(@Query("c") String filter);
-    */
 
     @GET("lookup.php")
     Single<ApiDataListResponse> searchCocktailById(@Query("i") String i);
 
-
     //@GET("search.php?s=margarita")
     //Single<ApiDataListResponse> getString();
-
-    /*
 
     @GET("search.php")
     Single<ApiDataListResponse> getSearchResults(@Query("s") String search);
@@ -47,9 +34,6 @@ public interface ApiDataInterface {
 
     @GET("lookup.php")
     Single<ApiDataListResponse> getDrinkById(@Query("i") String id);
-
-
-     */
 
 
 }

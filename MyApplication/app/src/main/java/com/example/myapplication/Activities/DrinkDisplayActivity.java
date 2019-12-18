@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.myapplication.Fragments.ListFragment;
+import com.example.myapplication.Fragments.NonAlcoholicFragment;
 import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,6 +27,7 @@ public class DrinkDisplayActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         configureBottomNavigationView();
         connectFragment(ListFragment.newInstance());
+        connectFragment(NonAlcoholicFragment.newInstance());
     }
 
     public void configureBottomNavigationView(){
@@ -38,8 +40,12 @@ public class DrinkDisplayActivity extends AppCompatActivity {
     public Boolean updateMainFragment(int i){
         Fragment f;
         switch (i){
-            case R.id.list_view:
+            case R.id.ordinaryDrink:
                 f = ListFragment.newInstance();
+                connectFragment(f);
+                break;
+            case R.id.nonAlcoholicDrink:
+                f = NonAlcoholicFragment.newInstance();
                 connectFragment(f);
                 break;
         }

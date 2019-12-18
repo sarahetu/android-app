@@ -14,6 +14,7 @@ public interface DrinkSearchContract {
 
     interface Presenter {
         void searchDrinks();
+        void searchNonAlcoholicDrinks();
         void attachView(View view);
     }
 }

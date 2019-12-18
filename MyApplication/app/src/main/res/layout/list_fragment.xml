@@ -30,20 +30,11 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/testView_ing1"
+            android:id="@+id/testView_alcoholic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/testView_ing2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/testView_ing3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:textColor="#009688"
+            android:textStyle="italic" />
 
 
     </LinearLayout>

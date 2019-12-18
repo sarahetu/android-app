@@ -2,7 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/list_view"
+        android:id="@+id/ordinaryDrink"
+        android:enabled="true"
+        android:title="@string/list"
+        />
+    <item
+        android:id="@+id/nonAlcoholicDrink"
         android:enabled="true"
         android:title="@string/list"
         />

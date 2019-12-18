@@ -15,7 +15,7 @@ public class DrinkDisplayRemoteDataSource {
     }
 
     public Single<DrinksListResponse> getDrinkSearchResponse() {
-        return data.listCocktailIds("Cocktail");
+        return data.listCocktailIds("Ordinary_Drink");
     }
 
     public Single<ApiDataListResponse> getDrinkDetails(String id) {

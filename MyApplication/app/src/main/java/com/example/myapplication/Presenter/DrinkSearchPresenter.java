@@ -53,6 +53,31 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
 
     }
 
+    @Override
+    public void searchNonAlcoholicDrinks() {
+        compositeDisposable.add(drinkDisplayRepository.getNonAlcoholicListResponse()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<DrinksListResponse>() {
+
+                    @Override
+                    public void onSuccess(DrinksListResponse drinkListResponse) {
+
+                        List<String> ids = view.getAllDrinksId(drinkToViewModelMapper.map(
+                                drinkDisplayRepository,
+                                drinkListResponse.getDrinks()
+                        ));
+                        displayDrinks(ids);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println(e.toString());
+                    }
+                }));
+
+    }
+
     public void displayDrinks(List<String> ids){
         compositeDisposable.clear();
         for(String id : ids){
@@ -74,6 +99,7 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
                     }));
         }
     }
+
 
     @Override
     public void attachView(DrinkSearchContract.View view) {

@@ -48,18 +48,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
             strDrink = mView.findViewById(R.id.testView_strDdrink);
             strDrinkThumb = mView.findViewById(R.id.imageView_strDrinkThumb);
             strInstructions = mView.findViewById(R.id.textView_strInstructions);
-            strIngredient1 = mView.findViewById(R.id.testView_ing1);
-            strIngredient2 = mView.findViewById(R.id.testView_ing2);
-            strAlcoholic = mView.findViewById(R.id.testView_ing3);
+            strAlcoholic = mView.findViewById(R.id.testView_alcoholic);
         }
 
 
         void bind(DrinkItemViewModel drinkItemViewModel){
             this.drinkItemViewModel = drinkItemViewModel;
             strDrink.setText(this.drinkItemViewModel.getmDrinkName());
-            strIngredient1.setText(this.drinkItemViewModel.getIngrdient1());
-            strIngredient2.setText(this.drinkItemViewModel.getIngrdient2());
-            strAlcoholic.setText(this.drinkItemViewModel.getIngrdient3());
+            strAlcoholic.setText(this.drinkItemViewModel.getAlcoholic());
             //strInstructions.setText(this.drinkItemViewModel.getInstruction());
             Glide.with(mView)
                     .load(drinkItemViewModel.getmDrinkThumb())
@@ -86,7 +82,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_listfragment, parent, false);
+                .inflate(R.layout.list_fragment, parent, false);
 
         return new CustomViewHolder(view, fragmentManager);
     }

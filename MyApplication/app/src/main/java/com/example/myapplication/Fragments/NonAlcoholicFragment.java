@@ -15,10 +15,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Adapters.ListAdapter;
-
-
 import com.example.myapplication.Activities.DrinkToViewModelMapper;
+import com.example.myapplication.Adapters.ListAdapter;
 import com.example.myapplication.Data.DrinkItemViewModel;
 import com.example.myapplication.Presenter.DrinkSearchContract;
 import com.example.myapplication.Presenter.DrinkSearchPresenter;
@@ -28,7 +26,7 @@ import com.example.myapplication.Retrofit.RetrofitClient;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListFragment extends Fragment implements DrinkSearchContract.View{
+public class NonAlcoholicFragment extends Fragment implements DrinkSearchContract.View {
 
     private View rootView;
     private RecyclerView recyclerView;
@@ -36,27 +34,21 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
     private ListAdapter listViewAdapter;
     private FragmentManager fragmentManager;
     private boolean isLayoutLinear = true;
+    private NonAlcoholicFragment(){}
 
-    private ListFragment(){}
 
-
-    public static ListFragment newInstance(){
-        return new ListFragment();
+    public static NonAlcoholicFragment newInstance(){
+        return new NonAlcoholicFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.container_fragment, container, false);
-
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), DividerItemDecoration.VERTICAL));
-
         fragmentManager = getActivity().getSupportFragmentManager();
-
-
         setupRecyclerView();
-
         Button button = (Button) rootView.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -69,21 +61,15 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
                 }
             }
         });
-
         presenter = new DrinkSearchPresenter(
                 RetrofitClient.getDrinkDisplayRepository(),
                 new DrinkToViewModelMapper());
-
-        presenter.searchDrinks();
-
+        presenter.searchNonAlcoholicDrinks();
         presenter.attachView(this);
-
         return rootView;
     }
 
-    /***
-     * This method sets up the recycler view of the list view
-     */
+
     public void setupRecyclerView(){
         recyclerView = rootView.findViewById(R.id.recyclerView);
         listViewAdapter = new ListAdapter(fragmentManager);
@@ -107,7 +93,4 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
 
         return ids;
     }
-
-
-
 }

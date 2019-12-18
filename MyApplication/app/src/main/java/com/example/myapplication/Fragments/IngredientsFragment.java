@@ -65,7 +65,7 @@ public class IngredientsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.fragment_ingredient, container, false);
+        rootView = inflater.inflate(R.layout.drink_fragment, container, false);
 
         textViewName = rootView.findViewById(R.id.tv_name_details);
         textViewThumb = rootView.findViewById(R.id.textView_image);
@@ -85,17 +85,17 @@ public class IngredientsFragment extends Fragment {
         textViewIngredient1.setText(ingredient4);
         textViewIngredient1.setText(ingredient5);
         textViewIngredient1.setText(alcoholic);
-        Glide.with(rootView)
-                .load(thumb)
-                .apply(new RequestOptions().override(500,500))
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(textViewThumb);
         setIngredient(ingredient1, textViewIngredient1);
         setIngredient(ingredient2, textViewIngredient2);
         setIngredient(ingredient3, textViewIngredient3);
         setIngredient(ingredient4, textViewIngredient4);
         setIngredient(ingredient5, textViewIngredient5);
         setAlcoholic(alcoholic,textViewAlcoholic);
+        Glide.with(rootView)
+                .load(thumb)
+                .apply(new RequestOptions().override(500,500))
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(textViewThumb);
 
         return rootView;
     }

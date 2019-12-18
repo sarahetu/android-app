@@ -4,12 +4,12 @@
     <item
         android:id="@+id/ordinaryDrink"
         android:enabled="true"
-        android:title="@string/list"
+        android:title="@string/ordinaryDrink"
         />
     <item
         android:id="@+id/nonAlcoholicDrink"
         android:enabled="true"
-        android:title="@string/list"
+        android:title="@string/nonAlcoholicDrink"
         />
 
 </menu>

@@ -3,5 +3,6 @@
     <string name="search_query" translatable="false">Query</string>
     <string name="label_prep"><u>Instruction</u></string>
     <string name="ingredients"><u>Ingredients</u></string>
-    <string name="list">Click</string>
+    <string name="ordinaryDrink"> Ordinary Drink </string>
+    <string name="nonAlcoholicDrink"> Non Alcoholic Drink </string>
 </resources>

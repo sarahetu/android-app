@@ -1,26 +1,9 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Drink app</string>
     <string name="search_query" translatable="false">Query</string>
     <string name="label_prep"><u>Instruction</u></string>
     <string name="ingredients"><u>Ingredients</u></string>
     <string name="ordinaryDrink"> Ordinary Drink </string>
     <string name="nonAlcoholicDrink"> Non Alcoholic Drink </string>
     <string name="alcoholicDrink"> Alcoholic Drink </string>
-
-    <!-- Navigation Drawer -->
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_title_inspire_me">Inspire me</string>
-    <string name="nav_title_alcoholic">Alcoholic</string>
-    <string name="nav_title_category">Category</string>
-    <string name="nav_title_favourite_ingredients">Favourite Ingredients</string>
-
-    <!-- Navigation drawer menu items and title for main activity toolbar based on which fragment is present-->
-    <string name="nav_item_saved_cocktails">Saved Cocktails</string>
-    <string name="nav_item_randomixer">Randomixer</string>
-    <string name="nav_item_non_alcoholic">Non Alcoholic</string>
-    <string name="nav_item_alcoholic">Alcoholic</string>
-
-
-
 </resources>

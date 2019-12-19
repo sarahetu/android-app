@@ -13,6 +13,9 @@ import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
+/**
+ * The main activity of the application
+ */
 public class DrinkDisplayActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
@@ -22,21 +25,22 @@ public class DrinkDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottom_navigation_view);
-        configureBottomNavigationView();
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                item -> navigate(item.getItemId())
+        );
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, ListFragment.newInstance());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
-    public void configureBottomNavigationView(){
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                item -> updateMainFragment(item.getItemId())
-        );
-    }
 
-
-    public Boolean updateMainFragment(int id){
+    /**
+     * Navigate to display the right fragment
+     * @param id an integer representing the fragment wanted
+     * @return a Boolean true
+     */
+    public Boolean navigate(int id){
         if (id == R.id.nonAlcoholicDrink) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, NonAlcoholicFragment.newInstance());

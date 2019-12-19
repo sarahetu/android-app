@@ -1,5 +1,8 @@
 package com.example.myapplication.Data;
 
+/**
+ * A view model of a drink item
+ */
 public class DrinkItemViewModel  {
     private String mDrinkName;
     private String mDrinkThumb;

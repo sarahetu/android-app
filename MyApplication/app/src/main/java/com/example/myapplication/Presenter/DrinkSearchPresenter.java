@@ -1,7 +1,7 @@
 package com.example.myapplication.Presenter;
 
-import com.example.myapplication.Activities.DrinkDisplayRepository;
-import com.example.myapplication.Activities.DrinkToViewModelMapper;
+import com.example.myapplication.Repository.DrinkDisplayRepository;
+import com.example.myapplication.Repository.DrinkToViewModelMapper;
 import com.example.myapplication.Data.ApiDataListResponse;
 import com.example.myapplication.Data.DrinksListResponse;
 
@@ -26,82 +26,77 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
         this.drinkToViewModelMapper = drinkToViewModelMapper;
     }
 
+
+    /**
+     * search for ordinary drinks
+     */
     @Override
     public void searchDrinks() {
         compositeDisposable.add(drinkDisplayRepository.getDrinksListResponse()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<DrinksListResponse>() {
-
                     @Override
                     public void onSuccess(DrinksListResponse drinkListResponse) {
-                        List<String> ids = view.getAllDrinksId(drinkToViewModelMapper.map(
-                                drinkDisplayRepository,
-                                drinkListResponse.getDrinks()
-                        ));
-                        displayDrinks(ids);
+                        displayDrinks(drinkListResponse);
                     }
-
                     @Override
                     public void onError(Throwable e) {
-                        // handle the error case
                         System.out.println(e.toString());
                     }
                 }));
-
     }
 
+    /**
+     * search for non alcoholic drinks
+     */
     @Override
     public void searchNonAlcoholicDrinks() {
         compositeDisposable.add(drinkDisplayRepository.getNonAlcoholicListResponse()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<DrinksListResponse>() {
-
                     @Override
                     public void onSuccess(DrinksListResponse drinkListResponse) {
-
-                        List<String> ids = view.getAllDrinksId(drinkToViewModelMapper.map(
-                                drinkDisplayRepository,
-                                drinkListResponse.getDrinks()
-                        ));
-                        displayDrinks(ids);
+                        displayDrinks(drinkListResponse);
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         System.out.println(e.toString());
                     }
                 }));
-
     }
 
+
+    /**
+     * search for alcoholic drinks
+     */
     @Override
     public void searchAlcoholicDrinks() {
         compositeDisposable.add(drinkDisplayRepository.getAlcoholicListResponse()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<DrinksListResponse>() {
-
                     @Override
                     public void onSuccess(DrinksListResponse drinkListResponse) {
-
-                        List<String> ids = view.getAllDrinksId(drinkToViewModelMapper.map(
-                                drinkDisplayRepository,
-                                drinkListResponse.getDrinks()
-                        ));
-                        displayDrinks(ids);
+                        displayDrinks(drinkListResponse);
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         System.out.println(e.toString());
                     }
                 }));
-
     }
 
-    public void displayDrinks(List<String> ids){
+
+    /**
+     * @param drinkListResponse a DrinksListResponse object
+     */
+    public void displayDrinks(DrinksListResponse drinkListResponse){
+        List<String> ids = view.getAllDrinksId(drinkToViewModelMapper.map(
+                drinkDisplayRepository,
+                drinkListResponse.getDrinks()
+        ));
         compositeDisposable.clear();
         for(String id : ids){
             compositeDisposable.add(drinkDisplayRepository.getDrinkSearchResponse(id)
@@ -123,7 +118,11 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
         }
     }
 
-
+    /**
+     * connect to the right view to fill
+     *
+     * @param view
+     */
     @Override
     public void attachView(DrinkSearchContract.View view) {
         this.view = view;

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Adapters.ListAdapter;
 
 
-import com.example.myapplication.Activities.DrinkToViewModelMapper;
+import com.example.myapplication.Repository.DrinkToViewModelMapper;
 import com.example.myapplication.Data.DrinkItemViewModel;
 import com.example.myapplication.Presenter.DrinkSearchContract;
 import com.example.myapplication.Presenter.DrinkSearchPresenter;
@@ -28,6 +28,9 @@ import com.example.myapplication.Retrofit.RetrofitClient;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A Fragment representing a the ordinary drinks, that's the default fragment
+ */
 public class ListFragment extends Fragment implements DrinkSearchContract.View{
 
     private View rootView;
@@ -39,6 +42,9 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
 
     private ListFragment(){}
 
+    /**
+     * @return anew instance of ListFragment
+     */
     public static ListFragment newInstance(){
         return new ListFragment();
     }
@@ -73,6 +79,9 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
     }
 
 
+    /**
+     * set up the recycler view
+     */
     public void setupRecyclerView(){
         recyclerView = rootView.findViewById(R.id.recyclerView);
         listViewAdapter = new ListAdapter(fragmentManager);
@@ -81,11 +90,19 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
         isLayoutLinear=true;
     }
 
+    /**
+     * fill the view of the drinks
+     * @param drinkItemViewModel a list of DrinkItemViewModel object
+     */
     @Override
     public void displayDrinks(List<DrinkItemViewModel> drinkItemViewModel) {
         listViewAdapter.bindViewModels(drinkItemViewModel);
     }
 
+    /**
+     * @param drinkItemViewModel a list of DrinkItemViewModel object
+     * @return all the id drinks
+     */
     @Override
     public List<String> getAllDrinksId(List<DrinkItemViewModel> drinkItemViewModel) {
         List<String> drinksIds = new ArrayList<>();

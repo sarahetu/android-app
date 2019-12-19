@@ -4,19 +4,18 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * a class to represent all the drinks thanks to a list of Drinks objects
+ */
 public class DrinksListResponse {
 
     @SerializedName("drinks")
     List<Drinks> drinks;
 
-    int totalDrinks;
+    /**
+     * @return a list of Drinks objects that contains all the drinks
+     */
     public List<Drinks> getDrinks() {
         return drinks;
-    }
-    public int getTotalDrinks() {
-        return totalDrinks;
-    }
-    public void setDrinks(List<Drinks> drinks) {
-        this.drinks = drinks;
     }
 }

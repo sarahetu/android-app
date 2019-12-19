@@ -1,5 +1,8 @@
 package com.example.myapplication.Data;
 
+/**
+ * a class representings Drinks
+ */
 public class Drinks {
 
     private String idDrink;
@@ -31,7 +34,5 @@ public class Drinks {
     public void setStrAlcoholic(String strAlcoholic) {
         this.strAlcoholic = strAlcoholic;
     }
-
-
 
 }

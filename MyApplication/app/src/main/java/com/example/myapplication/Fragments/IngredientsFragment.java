@@ -18,7 +18,7 @@ import com.example.myapplication.Data.DrinkItemViewModel;
 import com.example.myapplication.R;
 
 /**
- *
+ * A Fragment representing a choosen drink, with all the details as the ingredients, the instructions and a picture
  */
 public class IngredientsFragment extends Fragment {
 
@@ -44,12 +44,19 @@ public class IngredientsFragment extends Fragment {
     private TextView textViewAlcoholic;
 
 
-
+    /**
+     * @param drinkItemViewModel a DrinkItemViewModel object
+     * @return a new instance of IngredientsFragment
+     */
     public static IngredientsFragment newInstance(DrinkItemViewModel drinkItemViewModel){
         return new IngredientsFragment(drinkItemViewModel);
     }
 
 
+    /**
+     * get all the usefull data to fill the view
+     * @param drinkItemViewModel a DrinkItemViewModel object
+     */
     public IngredientsFragment(DrinkItemViewModel drinkItemViewModel){
         id = drinkItemViewModel.getmDrinkId();
         name = drinkItemViewModel.getmDrinkName();
@@ -99,25 +106,33 @@ public class IngredientsFragment extends Fragment {
                 .apply(new RequestOptions().override(500,500))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(textViewThumb);
-
         return rootView;
     }
 
+    /**
+     * @param instruction a String to represent the instruction to follow
+     * @param textView a TextView object
+     */
     public void setInstruction(String instruction, TextView textView){
         if (instruction != null && !instruction.isEmpty()){
             textView.setText(instruction);
         }
     }
 
-
+    /**
+     * @param ingredient a String to represent an ingredient
+     * @param textView a TextView object
+     */
     public void setIngredient(String ingredient, TextView textView){
         if (ingredient != null && !ingredient.isEmpty()){
             textView.setText(ingredient);
         }
     }
 
-
-
+    /**
+     * @param alcoholic a String to represent the alcoholic status
+     * @param textView a TextView object
+     */
     public void setAlcoholic(String alcoholic, TextView textView){
         if(alcoholic != null && !alcoholic.isEmpty()){
             textView.setText(alcoholic);

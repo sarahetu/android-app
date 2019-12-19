@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Activities.DrinkToViewModelMapper;
+import com.example.myapplication.Repository.DrinkToViewModelMapper;
 import com.example.myapplication.Adapters.ListAdapter;
 import com.example.myapplication.Data.DrinkItemViewModel;
 import com.example.myapplication.Presenter.DrinkSearchContract;
@@ -27,6 +27,10 @@ import com.example.myapplication.Retrofit.RetrofitClient;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A Fragment representing the alcoholic drinks
+ *
+ */
 public class AlcoholicFragment extends Fragment implements DrinkSearchContract.View {
 
     private View rootView;
@@ -38,6 +42,9 @@ public class AlcoholicFragment extends Fragment implements DrinkSearchContract.V
 
     private AlcoholicFragment(){}
 
+    /**
+     * @return a new instance of the AlcoholicFragment
+     */
     public static AlcoholicFragment newInstance(){
         return new AlcoholicFragment();
     }
@@ -71,6 +78,9 @@ public class AlcoholicFragment extends Fragment implements DrinkSearchContract.V
     }
 
 
+    /**
+     * set up the recycler view of the Alcoholic Fragment
+     */
     public void setupRecyclerView(){
         recyclerView = rootView.findViewById(R.id.recyclerView);
         listViewAdapter = new ListAdapter(fragmentManager);
@@ -79,18 +89,25 @@ public class AlcoholicFragment extends Fragment implements DrinkSearchContract.V
         isLayoutLinear=true;
     }
 
+    /**
+     * fill the view model of the drinks
+     * @param drinkItemViewModel a list of DrinkItemViewModel
+     */
     @Override
     public void displayDrinks(List<DrinkItemViewModel> drinkItemViewModel) {
         listViewAdapter.bindViewModels(drinkItemViewModel);
     }
 
+    /**
+     * @param drinkItemViewModel  a list of DrinkItemViewModel object
+     * @return all the drinks id
+     */
     @Override
     public List<String> getAllDrinksId(List<DrinkItemViewModel> drinkItemViewModel) {
-        List<String> ids = new ArrayList<>();
-
+        List<String> drinksIds = new ArrayList<>();
         for(DrinkItemViewModel c : drinkItemViewModel){
-            ids.add(c.getmDrinkId());
+            drinksIds.add(c.getmDrinkId());
         }
-        return ids;
+        return drinksIds;
     }
 }

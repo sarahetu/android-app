@@ -23,6 +23,12 @@ import com.example.myapplication.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An adapter to create a list with RecyclerView.
+ * The app can display a scrolling list of elements, thanks to the use of RecyclerView.
+ * The views in the list are represented by view Custom holder objects.
+ * Each view holder is in charge of displaying a single item with a view.
+ */
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHolder> {
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder  {
@@ -39,6 +45,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
 
         private FragmentManager fragmentManager;
 
+        /**
+         * create a CustomViewHolder to display a drink with a picture, a name and his alcoholic category
+         * @param itemView a View
+         * @param fragmentManager a FragmentManager
+         */
         public CustomViewHolder(@NonNull View itemView, FragmentManager fragmentManager) {
             super(itemView);
             mView = itemView;
@@ -50,6 +61,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
         }
 
 
+        /**
+         * fill the view with information about the drink item
+         * @param drinkItemViewModel a DrinkItemViewModel object
+         */
         void bind(DrinkItemViewModel drinkItemViewModel){
             this.drinkItemViewModel = drinkItemViewModel;
             strDrink.setText(this.drinkItemViewModel.getmDrinkName());
@@ -65,11 +80,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
     private List<DrinkItemViewModel> drinkItemViewModelList;
     private FragmentManager fragmentManager;
 
+    /**
+     * Build an instance of the ListAdapter
+     * @param fragmentManager a FragmentManager
+     */
     public ListAdapter(FragmentManager fragmentManager){
         drinkItemViewModelList = new ArrayList<>();
         this.fragmentManager = fragmentManager;
     }
 
+    /**
+     * fill the view model
+     * @param drinkItemViewModelList a list of DrinkItemViewModel object
+     */
     public void bindViewModels(List<DrinkItemViewModel> drinkItemViewModelList){
         this.drinkItemViewModelList.addAll(drinkItemViewModelList);
         notifyDataSetChanged();
@@ -85,6 +108,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
     }
 
 
+    /**
+     * fill the view
+     * @param holder a CustomViewHolder
+     * @param position an integer to represent the position
+     */
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         final DrinkItemViewModel currentElement = drinkItemViewModelList.get(position);
         holder.bind(drinkItemViewModelList.get(position));

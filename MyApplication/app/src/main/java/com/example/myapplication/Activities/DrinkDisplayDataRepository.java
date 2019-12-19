@@ -28,5 +28,10 @@ public class DrinkDisplayDataRepository implements DrinkDisplayRepository{
         return drinkDisplayRemoteDataSource.getNonAlcoholSearchResponse();
     }
 
+    @Override
+    public Single<DrinksListResponse> getAlcoholicListResponse() {
+        return drinkDisplayRemoteDataSource.getAlcoholSearchResponse();
+    }
+
 
 }

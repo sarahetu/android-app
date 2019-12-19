@@ -17,6 +17,9 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.Data.DrinkItemViewModel;
 import com.example.myapplication.R;
 
+/**
+ *
+ */
 public class IngredientsFragment extends Fragment {
 
     private View rootView;
@@ -112,6 +115,8 @@ public class IngredientsFragment extends Fragment {
             textView.setText(ingredient);
         }
     }
+
+
 
     public void setAlcoholic(String alcoholic, TextView textView){
         if(alcoholic != null && !alcoholic.isEmpty()){

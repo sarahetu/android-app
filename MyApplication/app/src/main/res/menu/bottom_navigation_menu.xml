@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
     <item
         android:id="@+id/ordinaryDrink"
         android:enabled="true"
@@ -10,6 +12,12 @@
         android:id="@+id/nonAlcoholicDrink"
         android:enabled="true"
         android:title="@string/nonAlcoholicDrink"
+        />
+
+    <item
+        android:id="@+id/alcoholicDrink"
+        android:enabled="true"
+        android:title="@string/alcoholicDrink"
         />
 
 </menu>

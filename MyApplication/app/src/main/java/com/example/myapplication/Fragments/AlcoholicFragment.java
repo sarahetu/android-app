@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments;
 
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +16,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Adapters.ListAdapter;
-
-
 import com.example.myapplication.Activities.DrinkToViewModelMapper;
+import com.example.myapplication.Adapters.ListAdapter;
 import com.example.myapplication.Data.DrinkItemViewModel;
 import com.example.myapplication.Presenter.DrinkSearchContract;
 import com.example.myapplication.Presenter.DrinkSearchPresenter;
@@ -28,7 +27,7 @@ import com.example.myapplication.Retrofit.RetrofitClient;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListFragment extends Fragment implements DrinkSearchContract.View{
+public class AlcoholicFragment extends Fragment implements DrinkSearchContract.View {
 
     private View rootView;
     private RecyclerView recyclerView;
@@ -37,10 +36,10 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
     private FragmentManager fragmentManager;
     private boolean isLayoutLinear = true;
 
-    private ListFragment(){}
+    private AlcoholicFragment(){}
 
-    public static ListFragment newInstance(){
-        return new ListFragment();
+    public static AlcoholicFragment newInstance(){
+        return new AlcoholicFragment();
     }
 
     @Nullable
@@ -63,11 +62,10 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
                 }
             }
         });
-
         presenter = new DrinkSearchPresenter(
                 RetrofitClient.getDrinkDisplayRepository(),
                 new DrinkToViewModelMapper());
-        presenter.searchDrinks();
+        presenter.searchAlcoholicDrinks();
         presenter.attachView(this);
         return rootView;
     }
@@ -88,13 +86,11 @@ public class ListFragment extends Fragment implements DrinkSearchContract.View{
 
     @Override
     public List<String> getAllDrinksId(List<DrinkItemViewModel> drinkItemViewModel) {
-        List<String> drinksIds = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
+
         for(DrinkItemViewModel c : drinkItemViewModel){
-            drinksIds.add(c.getmDrinkId());
+            ids.add(c.getmDrinkId());
         }
-        return drinksIds;
+        return ids;
     }
-
-
-
 }

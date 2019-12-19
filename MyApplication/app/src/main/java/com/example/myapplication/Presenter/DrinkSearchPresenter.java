@@ -28,7 +28,6 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
 
     @Override
     public void searchDrinks() {
-        //compositeDisposable.clear();
         compositeDisposable.add(drinkDisplayRepository.getDrinksListResponse()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -36,7 +35,6 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
 
                     @Override
                     public void onSuccess(DrinksListResponse drinkListResponse) {
-
                         List<String> ids = view.getAllDrinksId(drinkToViewModelMapper.map(
                                 drinkDisplayRepository,
                                 drinkListResponse.getDrinks()
@@ -56,6 +54,31 @@ public class DrinkSearchPresenter implements DrinkSearchContract.Presenter {
     @Override
     public void searchNonAlcoholicDrinks() {
         compositeDisposable.add(drinkDisplayRepository.getNonAlcoholicListResponse()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<DrinksListResponse>() {
+
+                    @Override
+                    public void onSuccess(DrinksListResponse drinkListResponse) {
+
+                        List<String> ids = view.getAllDrinksId(drinkToViewModelMapper.map(
+                                drinkDisplayRepository,
+                                drinkListResponse.getDrinks()
+                        ));
+                        displayDrinks(ids);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println(e.toString());
+                    }
+                }));
+
+    }
+
+    @Override
+    public void searchAlcoholicDrinks() {
+        compositeDisposable.add(drinkDisplayRepository.getAlcoholicListResponse()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<DrinksListResponse>() {

@@ -25,4 +25,8 @@ public class DrinkDisplayRemoteDataSource {
     public Single<DrinksListResponse> getNonAlcoholSearchResponse() {
         return data.getAlcoholFilter("Non_Alcoholic");
     }
+
+    public Single<DrinksListResponse> getAlcoholSearchResponse() {
+        return data.getAlcoholFilter("Alcoholic");
+    }
 }

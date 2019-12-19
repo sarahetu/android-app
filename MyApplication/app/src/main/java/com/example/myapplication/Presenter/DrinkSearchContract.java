@@ -11,10 +11,10 @@ public interface DrinkSearchContract {
         List<String> getAllDrinksId(List<DrinkItemViewModel> drinkItemViewModel);
     }
 
-
     interface Presenter {
         void searchDrinks();
         void searchNonAlcoholicDrinks();
+        void searchAlcoholicDrinks();
         void attachView(View view);
     }
 }

@@ -21,7 +21,9 @@
             android:id="@+id/testView_strDdrink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:textColor="#E91E63"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView

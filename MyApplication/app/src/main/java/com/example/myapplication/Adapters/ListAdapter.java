@@ -34,8 +34,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
         private TextView strDrink;
         private ImageView strDrinkThumb;
         private TextView strInstructions;
-        private TextView strIngredient1;
-        private TextView strIngredient2;
         private TextView strAlcoholic;
 
 
@@ -56,7 +54,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CustomViewHold
             this.drinkItemViewModel = drinkItemViewModel;
             strDrink.setText(this.drinkItemViewModel.getmDrinkName());
             strAlcoholic.setText(this.drinkItemViewModel.getAlcoholic());
-            //strInstructions.setText(this.drinkItemViewModel.getInstruction());
             Glide.with(mView)
                     .load(drinkItemViewModel.getmDrinkThumb())
                     .apply(new RequestOptions().override(200,200))

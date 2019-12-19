@@ -9,7 +9,6 @@ public class Drinks {
     private String strDrink;
     private String strDrinkThumb;
     private String strAlcoholic;
-
     public String getIdDrink() {
         return idDrink;
     }
